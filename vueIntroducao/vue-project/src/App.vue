@@ -2,16 +2,29 @@
 import TaskList from "./components/icons/TaskList.vue";
 export default {
   components: { TaskList },
+  methods: {
+    movimentaTask(origem, destino) {
+      
+    },
+  },
   data() {
     return {
-      toDo: [
-        { text: "teste1", id: 1 },
-        { text: "teste2", id: 2 },
-      ],
-      Done: [
-        { text: "teste3", id: 1 },
-        { text: "teste4", id: 2 },
-      ],
+      toDo: {
+        items: [
+          { text: "teste1", id: 1 },
+          { text: "teste2", id: 2 },
+        ],
+        title: "toDo",
+        next: "Done",
+      },
+      Done: {
+        items: [
+          { text: "teste3", id: 3 },
+          { text: "teste4", id: 4 },
+        ],
+        title: "Done",
+        back: "toDo",
+      },
     };
   },
 };
@@ -19,7 +32,7 @@ export default {
 
 <template>
   <main>
-    <TaskList :tasks="toDo" />
+    <TaskList :tasks="toDo" @movimentaTask="movimentaTask" />
     <TaskList :tasks="Done" />
   </main>
 </template>
